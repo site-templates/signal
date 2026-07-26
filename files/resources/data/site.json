@@ -1,0 +1,41 @@
+{
+    "name": "Signal",
+    "tagline": "Turn product changes into clear, customer-facing updates — automatically.",
+    "theme": {
+        "palette": "ember",
+        "fonts": "inter",
+        "fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        "appearance": "light",
+        "appearance_class": ""
+    },
+    "hero_avatars": [
+        { "image": "https://assets.ui.sh/avatars/2.webp?size=160" },
+        { "image": "https://assets.ui.sh/avatars/5.webp?size=160" },
+        { "image": "https://assets.ui.sh/avatars/8.webp?size=160" },
+        { "image": "https://assets.ui.sh/avatars/11.webp?size=160" }
+    ],
+    "nav_links": [
+        { "text": "Features", "url": "/features" },
+        { "text": "Pricing", "url": "/pricing" },
+        { "text": "Changelog", "url": "/changelog" },
+        { "text": "Blog", "url": "/blog" }
+    ],
+    "footer_product": [
+        { "text": "Features", "url": "/features" },
+        { "text": "Pricing", "url": "/pricing" },
+        { "text": "Changelog", "url": "/changelog" },
+        { "text": "What's New widget", "url": "/features" }
+    ],
+    "footer_resources": [
+        { "text": "Blog", "url": "/blog" },
+        { "text": "Documentation", "url": "#" },
+        { "text": "API reference", "url": "#" },
+        { "text": "Status", "url": "#" }
+    ],
+    "footer_company": [
+        { "text": "About", "url": "/blog/why-we-built-signal" },
+        { "text": "Contact", "url": "#" },
+        { "text": "Privacy", "url": "#" },
+        { "text": "Terms", "url": "#" }
+    ]
+}

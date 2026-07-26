@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Free",
+        "blurb": "For side projects that still deserve an audience.",
+        "price": "$0",
+        "period": "forever",
+        "featured": false,
+        "badge": "",
+        "buttonText": "Start for free",
+        "buttonLink": "#",
+        "features": [
+            "One project",
+            "Hosted changelog on signal.so",
+            "What's New widget",
+            "Unlimited releases",
+            "RSS feed"
+        ]
+    },
+    {
+        "name": "Team",
+        "blurb": "For product teams that ship every week.",
+        "price": "$29",
+        "period": "per project / month",
+        "featured": true,
+        "badge": "Most popular",
+        "buttonText": "Start 14-day trial",
+        "buttonLink": "#",
+        "features": [
+            "Everything in Free",
+            "AI release notes from PRs",
+            "GitHub, Linear, and Jira sources",
+            "Email digests and Slack delivery",
+            "Custom domain and branding",
+            "Reactions and comments"
+        ]
+    },
+    {
+        "name": "Business",
+        "blurb": "For companies where updates cross many products.",
+        "price": "$79",
+        "period": "per project / month",
+        "featured": false,
+        "badge": "",
+        "buttonText": "Talk to sales",
+        "buttonLink": "#",
+        "features": [
+            "Everything in Team",
+            "Unlimited teammates",
+            "Feature request routing to your tracker",
+            "Audience segments per release",
+            "SAML SSO and audit log",
+            "Priority support"
+        ]
+    }
+]

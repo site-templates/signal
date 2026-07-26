@@ -1,0 +1,58 @@
+[
+    {
+        "version": "v2.14",
+        "date": "Mar 7, 2026",
+        "tag": "New",
+        "title": "Faster checkout, CSV exports, and widget dark mode",
+        "body": "The March release closes out three of the most-requested threads from the feedback board.",
+        "points": [
+            "Checkout is now a single round trip — no more double-charged carts on slow connections.",
+            "Export any members view to CSV, filters included.",
+            "The What's New widget follows your app's dark mode automatically."
+        ]
+    },
+    {
+        "version": "v2.13",
+        "date": "Feb 21, 2026",
+        "tag": "New",
+        "title": "Comments on updates",
+        "body": "Readers can now reply to a release right on your changelog. Comments thread under each update, and mentions of your teammates notify them in Slack.",
+        "points": [
+            "Comments are moderated from the dashboard — hold, approve, or block by domain.",
+            "Feature requests raised in a comment can be promoted to your tracker in one click."
+        ]
+    },
+    {
+        "version": "v2.12",
+        "date": "Feb 6, 2026",
+        "tag": "Improved",
+        "title": "Smarter drafts for monorepos",
+        "body": "Signal now understands path-based ownership, so a monorepo merge lands in the right product's changelog instead of one giant feed.",
+        "points": [
+            "Map folders to products once; every future PR routes itself.",
+            "Cross-product releases can publish to several changelogs from one draft."
+        ]
+    },
+    {
+        "version": "v2.11",
+        "date": "Jan 24, 2026",
+        "tag": "New",
+        "title": "Email digests on your schedule",
+        "body": "Weekly, biweekly, or on every release — digests now batch updates however your audience prefers, with per-subscriber frequency settings.",
+        "points": [
+            "Digest emails inherit your changelog branding automatically.",
+            "Unsubscribes are per-frequency, not all-or-nothing."
+        ]
+    },
+    {
+        "version": "v2.10",
+        "date": "Jan 9, 2026",
+        "tag": "Improved",
+        "title": "A faster hosted changelog",
+        "body": "The hosted changelog was rebuilt on edge rendering. Pages now paint in under 100ms worldwide, and RSS feeds update the moment you publish.",
+        "points": [
+            "Median page load dropped from 480ms to 90ms.",
+            "Custom domains now provision certificates in seconds."
+        ]
+    }
+]

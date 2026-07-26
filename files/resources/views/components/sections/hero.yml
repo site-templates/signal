@@ -1,0 +1,74 @@
+# The visual editor's contract for sections/hero.blade.php: each field maps
+# to a prop in the component's props. Defaults fill any attribute the page
+# doesn't pass. Field names are camelCase, matching the props they fill.
+title: Hero
+description: The opening statement — trust pill, the two-line cursor headline, subcopy, integrations, CTAs, and the product window
+fields:
+    showTrust:
+        type: toggle
+        label: Show trust pill
+        default: "1"
+    trustText:
+        type: text
+        label: Trust pill text
+        default: "Trusted by 2,400+ product teams"
+    avatars:
+        type: repeater
+        label: Trust pill avatars
+        add_button_label: "Add avatar"
+        item_label: image
+        source: site.hero_avatars
+        sub_fields:
+            image:
+                type: image
+                label: Avatar
+                default: "https://assets.ui.sh/avatars/2.webp?size=160"
+    heading1:
+        type: text
+        label: Headline line one
+        default: "Release notes that"
+    heading2:
+        type: text
+        label: Headline line two (accented)
+        default: "write themselves."
+    showCursor:
+        type: toggle
+        label: Show blinking cursor
+        description: The accent cursor bar at the end of line one.
+        default: "1"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Turn merged pull requests into polished release notes, publish a branded changelog, and embed product updates anywhere."
+    connectsLabel:
+        type: text
+        label: Integrations label
+        default: "Connects to"
+    integrations:
+        type: repeater
+        label: Integrations
+        add_button_label: "Add integration"
+        item_label: name
+        source: integrations
+        sub_fields:
+            name:
+                type: text
+                label: Name
+                default: "GitHub"
+    ctaText:
+        type: text
+        label: Primary button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Primary button link
+        default: "/pricing"
+    secondaryText:
+        type: text
+        label: Secondary button text
+        default: "Book a demo"
+    secondaryLink:
+        type: url
+        label: Secondary button link
+        default: "#"

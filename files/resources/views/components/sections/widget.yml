@@ -1,0 +1,50 @@
+# The visual editor's contract for sections/widget.blade.php. The popover's
+# update rows live in resources/data/collections/widgetUpdates.json.
+title: Widget showcase
+description: The embed pitch — copy, the script snippet, and the in-app widget mock
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "The widget"
+    heading:
+        type: text
+        label: Heading
+        default: "Drop “What’s New” into your app"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "One script tag. Your users get a badge when something ships, a feed when they click, and a place to react — without ever leaving your product."
+    snippetLabel:
+        type: text
+        label: Snippet label
+        default: "Paste before the closing body tag"
+    snippet:
+        type: textarea
+        label: Embed snippet
+        rows: 2
+        default: "<script src=\"https://cdn.signal.so/widget.js\" data-project=\"acme\"></script>"
+    badgeLabel:
+        type: text
+        label: Widget title
+        default: "What's New"
+    items:
+        type: repeater
+        label: Widget updates
+        add_button_label: "Add update"
+        item_label: title
+        source: widgetUpdates
+        sub_fields:
+            title:
+                type: text
+                label: Title
+                default: "New update"
+            tag:
+                type: text
+                label: Tag
+                default: "New"
+            date:
+                type: text
+                label: Date
+                default: "Today"

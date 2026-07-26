@@ -1,0 +1,50 @@
+# The visual editor's contract for layouts/post.blade.php — the blog post
+# chrome. Field names are camelCase, matching the props they fill.
+title: Post layout
+description: Blog post chrome — back link, headline, author meta, hero image, and the article body
+fields:
+    title:
+        type: text
+        label: Title
+        default: "Untitled post"
+    description:
+        type: textarea
+        label: Meta description
+        rows: 2
+        default: ""
+    category:
+        type: text
+        label: Category
+        default: "Product"
+    date:
+        type: text
+        label: Date
+        default: "Jan 1, 2026"
+    readTime:
+        type: text
+        label: Read time
+        default: "4 min read"
+    author:
+        type: text
+        label: Author
+        default: "Signal Team"
+    authorImage:
+        type: image
+        label: Author photo
+        default: "https://assets.ui.sh/avatars/2.webp?size=160"
+    image:
+        type: image
+        label: Hero image
+        default: "https://assets.ui.sh/wallpapers/silk.webp?variant=molten-amber"
+    imageAlt:
+        type: text
+        label: Hero image alt text
+        default: ""
+    backText:
+        type: text
+        label: Back link text
+        default: "Back to blog"
+    backLink:
+        type: url
+        label: Back link
+        default: "/blog"

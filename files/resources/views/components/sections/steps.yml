@@ -1,0 +1,34 @@
+# The visual editor's contract for sections/steps.blade.php. The steps live
+# in resources/data/collections/steps.json; numbers come from row order.
+title: How it works
+description: Heading plus the numbered steps from the steps collection
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "How it works"
+    heading:
+        type: text
+        label: Heading
+        default: "From merge to megaphone in three steps"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "No new workflow to learn — Signal sits at the end of the one you already have."
+    items:
+        type: repeater
+        label: Steps
+        add_button_label: "Add step"
+        item_label: title
+        source: steps
+        sub_fields:
+            title:
+                type: text
+                label: Title
+                default: "New step"
+            body:
+                type: textarea
+                label: Description
+                rows: 3
+                default: ""

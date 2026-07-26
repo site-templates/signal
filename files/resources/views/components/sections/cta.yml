@@ -1,0 +1,33 @@
+# The visual editor's contract for sections/cta.blade.php.
+title: Call to action
+description: The dark closing panel — headline, two buttons, and the reassurance line
+fields:
+    heading:
+        type: text
+        label: Heading
+        default: "Your next release deserves an announcement."
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "Connect a repo now and watch Signal draft your first release notes in under five minutes."
+    ctaText:
+        type: text
+        label: Primary button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Primary button link
+        default: "/pricing"
+    secondaryText:
+        type: text
+        label: Secondary button text
+        default: "See the live changelog"
+    secondaryLink:
+        type: url
+        label: Secondary button link
+        default: "/changelog"
+    footnote:
+        type: text
+        label: Reassurance line
+        default: "Free forever for one project · No credit card"

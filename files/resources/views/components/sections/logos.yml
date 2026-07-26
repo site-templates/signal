@@ -1,0 +1,24 @@
+# The visual editor's contract for sections/logos.blade.php. The customer
+# cards live in resources/data/collections/customers.json.
+title: Customer marquee
+description: A sliding row of miniature customer changelog windows
+fields:
+    heading:
+        type: text
+        label: Heading
+        default: "Changelogs your customers already read"
+    items:
+        type: repeater
+        label: Customers
+        add_button_label: "Add customer"
+        item_label: name
+        source: customers
+        sub_fields:
+            name:
+                type: text
+                label: Company
+                default: "New customer"
+            domain:
+                type: text
+                label: Changelog domain
+                default: "changelog.example.com"

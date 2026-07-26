@@ -1,0 +1,10 @@
+[
+    { "name": "Northwind", "domain": "updates.northwind.app" },
+    { "name": "Lumeo", "domain": "changelog.lumeo.io" },
+    { "name": "Basecoat", "domain": "news.basecoat.dev" },
+    { "name": "Ferrywell", "domain": "changelog.ferrywell.com" },
+    { "name": "Copperline", "domain": "updates.copperline.co" },
+    { "name": "Driftlab", "domain": "whatsnew.driftlab.ai" },
+    { "name": "Quartzite", "domain": "releases.quartzite.dev" },
+    { "name": "Halewood", "domain": "changelog.halewood.app" }
+]

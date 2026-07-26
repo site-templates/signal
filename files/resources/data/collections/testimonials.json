@@ -1,0 +1,20 @@
+[
+    {
+        "quote": "We shipped for two years without telling anyone. Signal turned our merge history into a changelog our customers actually bookmark — support tickets asking “did you fix X?” basically vanished.",
+        "name": "Mara Chen",
+        "role": "Head of Product, Northwind",
+        "avatar": "https://assets.ui.sh/avatars/2.webp?size=160"
+    },
+    {
+        "quote": "The drafts are shockingly good. It reads the PR, skips the refactor noise, and writes the sentence I would have written — twenty minutes of dread down to one approve click.",
+        "name": "Eli Ambrose",
+        "role": "Engineering Lead, Lumeo",
+        "avatar": "https://assets.ui.sh/avatars/5.webp?size=160"
+    },
+    {
+        "quote": "The widget pays for itself. Feature adoption on new releases doubled once What's New started badging inside the app instead of dying in an email nobody opens.",
+        "name": "Priya Raghavan",
+        "role": "Founder, Basecoat",
+        "avatar": "https://assets.ui.sh/avatars/8.webp?size=160"
+    }
+]

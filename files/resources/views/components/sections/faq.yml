@@ -1,0 +1,34 @@
+# The visual editor's contract for sections/faq.blade.php. The questions
+# live in resources/data/collections/faqs.json.
+title: FAQ
+description: Accordion of questions from the faqs collection
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "FAQ"
+    heading:
+        type: text
+        label: Heading
+        default: "Answers, before you ask"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "Everything teams check before switching their changelog to Signal."
+    items:
+        type: repeater
+        label: Questions
+        add_button_label: "Add question"
+        item_label: question
+        source: faqs
+        sub_fields:
+            question:
+                type: text
+                label: Question
+                default: "New question"
+            answer:
+                type: textarea
+                label: Answer
+                rows: 4
+                default: ""

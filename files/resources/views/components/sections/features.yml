@@ -1,0 +1,40 @@
+# The visual editor's contract for sections/features.blade.php. The cards
+# live in resources/data/collections/features.json; each icon is an inline
+# SVG string.
+title: Features bento
+description: Heading plus the bento grid of feature cards from the features collection
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Features"
+    heading:
+        type: text
+        label: Heading
+        default: "Everything between “merged” and “announced”"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "Signal watches your repos and trackers, drafts the story, and delivers it everywhere your customers listen."
+    items:
+        type: repeater
+        label: Feature cards
+        add_button_label: "Add feature"
+        item_label: title
+        source: features
+        sub_fields:
+            title:
+                type: text
+                label: Title
+                default: "New feature"
+            body:
+                type: textarea
+                label: Description
+                rows: 3
+                default: ""
+            icon:
+                type: textarea
+                label: Icon (inline SVG)
+                rows: 2
+                default: "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><circle cx='10' cy='10' r='6'/></svg>"

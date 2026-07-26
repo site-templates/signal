@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Connect your sources",
+        "body": "Authorize GitHub, Linear, or Jira in two clicks. Signal starts listening to merges, closed issues, and shipped tickets immediately."
+    },
+    {
+        "title": "Review the draft",
+        "body": "Each release arrives pre-written in plain customer language. Edit anything, drop what's internal, and match your voice once — Signal remembers."
+    },
+    {
+        "title": "Publish everywhere",
+        "body": "One click sends it to your hosted changelog, the in-app widget, email, Slack, and RSS. Every channel, one source of truth."
+    }
+]

@@ -1,0 +1,42 @@
+# The visual editor's contract for sections/changelog-list.blade.php. The
+# releases (including each release's bullet points) live in
+# resources/data/collections/releases.json.
+title: Changelog list
+description: The release timeline from the releases collection, plus the RSS link
+fields:
+    subscribeText:
+        type: text
+        label: Subscribe link text
+        default: "Subscribe via RSS"
+    subscribeLink:
+        type: url
+        label: Subscribe link
+        default: "#"
+    items:
+        type: repeater
+        label: Releases
+        add_button_label: "Add release"
+        item_label: title
+        source: releases
+        sub_fields:
+            version:
+                type: text
+                label: Version
+                default: "v1.0"
+            date:
+                type: text
+                label: Date
+                default: "Jan 1, 2026"
+            tag:
+                type: text
+                label: Tag
+                default: "New"
+            title:
+                type: text
+                label: Title
+                default: "New release"
+            body:
+                type: textarea
+                label: Summary
+                rows: 3
+                default: ""

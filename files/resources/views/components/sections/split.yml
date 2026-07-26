@@ -1,0 +1,35 @@
+# The visual editor's contract for sections/split.blade.php.
+title: Feature split
+description: Copy beside a small CSS-built product visual — pick the visual and flip the sides
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Release notes"
+    heading:
+        type: text
+        label: Heading
+        default: "From merged to announced"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Signal reads every merged pull request, filters out the internal noise, and drafts the customer-facing story in your voice."
+    stat:
+        type: text
+        label: Stat pill
+        default: "20 minutes of writing → one approve click"
+    visual:
+        type: select
+        label: Visual
+        default: "notes"
+        options:
+            notes: "PR becomes release note"
+            widget: "What's New widget"
+            feedback: "Reactions and comments"
+            notify: "Delivery channels"
+    reverse:
+        type: toggle
+        label: Flip sides
+        description: Puts the visual on the left on wide screens.
+        default: "0"

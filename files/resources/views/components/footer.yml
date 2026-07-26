@@ -1,0 +1,81 @@
+# The visual editor's contract for components/footer.blade.php — these fields
+# surface under the Layout tab. Field names are camelCase, matching the props
+# they fill. The three link columns edit site.json's footer_* keys.
+title: Footer
+description: Brand, tagline, three link columns, and the legal line
+fields:
+    brand:
+        type: text
+        label: Brand name
+        default: "Signal"
+    tagline:
+        type: textarea
+        label: Tagline
+        rows: 2
+        default: "Turn product changes into clear, customer-facing updates — automatically."
+    productHeading:
+        type: text
+        label: First column heading
+        default: "Product"
+    product:
+        type: repeater
+        label: Product links
+        add_button_label: "Add link"
+        item_label: text
+        source: site.footer_product
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New link"
+            url:
+                type: url
+                label: Link
+                default: "/"
+    resourcesHeading:
+        type: text
+        label: Second column heading
+        default: "Resources"
+    resources:
+        type: repeater
+        label: Resource links
+        add_button_label: "Add link"
+        item_label: text
+        source: site.footer_resources
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New link"
+            url:
+                type: url
+                label: Link
+                default: "/"
+    companyHeading:
+        type: text
+        label: Third column heading
+        default: "Company"
+    company:
+        type: repeater
+        label: Company links
+        add_button_label: "Add link"
+        item_label: text
+        source: site.footer_company
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New link"
+            url:
+                type: url
+                label: Link
+                default: "/"
+    copyright:
+        type: text
+        label: Copyright line
+        default: "© 2026 Signal Labs, Inc. All rights reserved."
+    statusText:
+        type: text
+        label: Status line
+        description: The little status pill on the right of the legal row.
+        default: "All systems broadcasting"

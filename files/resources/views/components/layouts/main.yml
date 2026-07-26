@@ -1,0 +1,21 @@
+# The visual editor's contract for layouts/main.blade.php — these fields
+# surface under the page's Layout settings. Field names are camelCase,
+# matching the props they fill.
+title: Main layout
+description: The site shell — themed head, side rulers, nav, and footer
+fields:
+    title:
+        type: text
+        label: Page title
+        description: Shown in the browser tab before the site name.
+        default: "Home"
+    description:
+        type: textarea
+        label: Meta description
+        rows: 2
+        default: ""
+    showRulers:
+        type: toggle
+        label: Show side rulers
+        description: The faint design-canvas ruler columns on both edges.
+        default: "1"

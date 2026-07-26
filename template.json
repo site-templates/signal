@@ -1,0 +1,22 @@
+{
+    "name": "Signal",
+    "dialect": "blade",
+    "description": "A warm, canvas-styled SaaS marketing site — floating pill nav, a giant cursor-bar headline, a CSS-built product window, bento features, pricing, a changelog, and an Insights blog.",
+    "icon": "📡",
+    "repo": "https://github.com/site-templates/signal",
+    "order": 14,
+    "category": "landing",
+    "theme": "light",
+    "accent": "#e8542a",
+    "themeable": true,
+    "palette": "ember",
+    "fonts": "inter",
+    "appearance": "light",
+    "pages": [
+        "Home",
+        "Features",
+        "Pricing",
+        "Changelog",
+        "Blog"
+    ]
+}

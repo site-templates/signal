@@ -1,0 +1,57 @@
+# The visual editor's contract for components/nav.blade.php — these fields
+# surface under the Layout tab. Field names are camelCase, matching the props
+# they fill.
+title: Navigation
+description: The announcement bar and the floating pill nav — brand, links, sign-in, and the call to action
+fields:
+    brand:
+        type: text
+        label: Brand name
+        default: "Signal"
+    links:
+        type: repeater
+        label: Navigation links
+        add_button_label: "Add link"
+        item_label: text
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New link"
+            url:
+                type: url
+                label: Link
+                default: "/"
+    signInText:
+        type: text
+        label: Sign-in link text
+        default: "Sign in"
+    signInLink:
+        type: url
+        label: Sign-in link
+        default: "#"
+    ctaText:
+        type: text
+        label: Button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Button link
+        default: "/pricing"
+    showBanner:
+        type: toggle
+        label: Show announcement bar
+        description: The dark bar above the nav pill.
+        default: "1"
+    bannerText:
+        type: text
+        label: Announcement text
+        default: "Signal 2.0 is here — release notes drafted by AI, straight from your merged PRs."
+    bannerLinkText:
+        type: text
+        label: Announcement link text
+        default: "Read the announcement"
+    bannerLink:
+        type: url
+        label: Announcement link
+        default: "/changelog"

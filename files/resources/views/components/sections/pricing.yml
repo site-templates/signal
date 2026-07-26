@@ -1,0 +1,62 @@
+# The visual editor's contract for sections/pricing.blade.php. The plan
+# cards (including each card's feature list) live in
+# resources/data/collections/plans.json.
+title: Pricing
+description: Heading plus the three plan cards from the plans collection
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Pricing"
+    heading:
+        type: text
+        label: Heading
+        default: "Start free. Upgrade when you ship."
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "Every plan includes the hosted changelog, the widget, and unlimited releases."
+    footnote:
+        type: text
+        label: Footnote
+        default: "Annual billing saves two months. Open-source projects publish free — talk to us."
+    items:
+        type: repeater
+        label: Plans
+        add_button_label: "Add plan"
+        item_label: name
+        source: plans
+        sub_fields:
+            name:
+                type: text
+                label: Plan name
+                default: "New plan"
+            blurb:
+                type: text
+                label: Blurb
+                default: ""
+            price:
+                type: text
+                label: Price
+                default: "$0"
+            period:
+                type: text
+                label: Period
+                default: "per month"
+            featured:
+                type: toggle
+                label: Featured plan
+                default: "0"
+            badge:
+                type: text
+                label: Badge (featured only)
+                default: ""
+            buttonText:
+                type: text
+                label: Button text
+                default: "Get started"
+            buttonLink:
+                type: url
+                label: Button link
+                default: "#"

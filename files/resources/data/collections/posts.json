@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Release notes people actually read",
+        "description": "Most changelogs are written for the team that shipped, not the customer who waited. Here's the structure we've seen work across 400+ changelogs.",
+        "date": "Mar 4, 2026",
+        "readTime": "6 min",
+        "author": "Mara Chen",
+        "authorImage": "https://assets.ui.sh/avatars/2.webp?size=160",
+        "image": "https://assets.ui.sh/wallpapers/horizon.webp?variant=sepia-rim",
+        "imageAlt": "",
+        "link": "/blog/release-notes-people-actually-read"
+    },
+    {
+        "title": "Your changelog is a growth channel",
+        "description": "Shipped-but-silent features convert nobody. What happened when three teams started treating updates as marketing.",
+        "date": "Feb 18, 2026",
+        "readTime": "5 min",
+        "author": "Eli Ambrose",
+        "authorImage": "https://assets.ui.sh/avatars/5.webp?size=160",
+        "image": "https://assets.ui.sh/wallpapers/blend.webp?variant=golden-hour-mist",
+        "imageAlt": "",
+        "link": "/blog/your-changelog-is-a-growth-channel"
+    },
+    {
+        "title": "How Northwind closed the feedback loop",
+        "description": "From merge to megaphone to roadmap: how one team wired Signal's reactions and comments straight into their planning cycle.",
+        "date": "Feb 3, 2026",
+        "readTime": "7 min",
+        "author": "Priya Raghavan",
+        "authorImage": "https://assets.ui.sh/avatars/8.webp?size=160",
+        "image": "https://assets.ui.sh/wallpapers/silk.webp?variant=platinum-flow",
+        "imageAlt": "",
+        "link": "/blog/how-northwind-closed-the-feedback-loop"
+    },
+    {
+        "title": "Why we built Signal",
+        "description": "We shipped every week and told no one. The story of the internal tool that became a product.",
+        "date": "Jan 15, 2026",
+        "readTime": "4 min",
+        "author": "Jonah Reyes",
+        "authorImage": "https://assets.ui.sh/avatars/11.webp?size=160",
+        "image": "https://assets.ui.sh/wallpapers/silk.webp?variant=molten-amber",
+        "imageAlt": "",
+        "link": "/blog/why-we-built-signal"
+    }
+]

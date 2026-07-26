@@ -1,0 +1,22 @@
+# The visual editor's contract for sections/page-header.blade.php.
+title: Page header
+description: The inner-page opener — optional icon badge, eyebrow, headline, and copy
+fields:
+    showIcon:
+        type: toggle
+        label: Show icon badge
+        description: The dark rounded square with the Signal mark.
+        default: "0"
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Page"
+    heading:
+        type: text
+        label: Heading
+        default: "Page heading"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: ""

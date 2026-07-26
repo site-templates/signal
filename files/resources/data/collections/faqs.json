@@ -1,0 +1,26 @@
+[
+    {
+        "question": "Does Signal publish without my approval?",
+        "answer": "Never by default. Every release lands as a draft you review, edit, and approve. Teams that trust the pipeline can turn on auto-publish per project — it's one toggle, and it's off until you say otherwise."
+    },
+    {
+        "question": "What does it connect to?",
+        "answer": "GitHub, Linear, and Jira today, with GitLab in beta. Signal reads merged pull requests, closed issues, and shipped tickets — it never needs write access to your code."
+    },
+    {
+        "question": "Can I keep my existing changelog URL?",
+        "answer": "Yes. Point your domain or subdomain at Signal and we serve the hosted changelog there, certificate included. Existing URLs can be redirected release-by-release so old links keep working."
+    },
+    {
+        "question": "How customizable is the widget?",
+        "answer": "Colors, fonts, corner radius, position, and dark mode are all configurable from the dashboard — no rebuild, changes apply live. It ships as one small script tag with no iframe."
+    },
+    {
+        "question": "Where does the feedback go?",
+        "answer": "Reactions and comments attach to the release, and feature requests can be routed straight into your tracker as issues with the customer's context attached — so the loop closes where your team already works."
+    },
+    {
+        "question": "Is there a free plan?",
+        "answer": "Yes — one project, the hosted changelog, and the widget, free forever. Paid plans add AI drafting, email and Slack delivery, custom domains, and more teammates."
+    }
+]

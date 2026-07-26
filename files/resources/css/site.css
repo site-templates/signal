@@ -1,0 +1,482 @@
+/*
+    Signal — theme tokens, canvas motifs, and the motion system.
+
+    This file is inlined right after Tailwind by @vite in the layout, so
+    everything here applies to every page. The tokens below become real
+    Tailwind utilities: bg-canvas, text-ink, text-muted, border-line,
+    bg-panel, text-accent, font-mono, and so on.
+*/
+
+@theme {
+    --font-mono: ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
+
+    /*
+        The palette, aliased onto the semantic theme tokens in
+        resources/css/theme.css — change the theme and the whole site follows.
+        Sans/display fonts live there too.
+    */
+    --color-canvas: var(--background);
+    --color-panel: var(--card);
+    --color-raised: var(--secondary);
+    --color-line: var(--border);
+
+    /* Text */
+    --color-ink: var(--foreground);
+    --color-muted: var(--muted-foreground);
+    --color-faint: color-mix(in oklab, var(--muted-foreground) 58%, var(--background));
+
+    /* The accent — Signal's persimmon, used for the cursor bar, links, and CTAs */
+    --color-accent: var(--primary);
+    --color-accent-ink: var(--primary-foreground);
+    --color-accent-soft: color-mix(in oklab, var(--primary) 11%, var(--background));
+    --color-accent-deep: color-mix(in oklab, var(--primary) 82%, black);
+
+    /* One easing for everything interactive: fast in, long soft settle */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Cross-page navigation fades — the whole site feels like one surface. */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+}
+
+html {
+    background-color: var(--color-canvas);
+}
+
+/* One stray wide element must never give the whole page a sideways scroll. */
+body {
+    overflow-x: clip;
+}
+
+::selection {
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+}
+
+/* Reduce the default focus halo to a crisp accent ring. */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/*
+    The reveal system. main.js adds .js to <html> before first paint, then an
+    IntersectionObserver flips .is-visible as each [data-reveal] element scrolls
+    into view. Without JavaScript nothing is ever hidden. Stagger a group by
+    setting --reveal-delay inline or via the utility classes below.
+*/
+.js [data-reveal] {
+    opacity: 0;
+    translate: 0 16px;
+    transition:
+        opacity 0.8s var(--ease-spring),
+        translate 0.8s var(--ease-spring);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.reveal-1 { --reveal-delay: 75ms; }
+.reveal-2 { --reveal-delay: 150ms; }
+.reveal-3 { --reveal-delay: 225ms; }
+.reveal-4 { --reveal-delay: 300ms; }
+.reveal-5 { --reveal-delay: 375ms; }
+
+@media (prefers-reduced-motion: reduce) {
+    .js [data-reveal] {
+        opacity: 1;
+        translate: 0 0;
+        transition: none;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+
+    .marquee-track {
+        animation: none;
+    }
+
+    .cursor-bar {
+        animation: none;
+    }
+}
+
+/*
+    The design-canvas frame: faint ruler columns pinned to the viewport edges
+    with tick marks every 10px and a longer tick every 50px — the AlignUI
+    working-file feel. Decorative only; hidden below lg.
+*/
+.ruler {
+    width: 14px;
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            color-mix(in oklab, var(--color-ink) 22%, transparent) 0 1px,
+            transparent 1px 50px
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            color-mix(in oklab, var(--color-ink) 10%, transparent) 0 1px,
+            transparent 1px 10px
+        );
+    background-size: 14px 100%, 7px 100%;
+    background-repeat: repeat-y;
+    background-position: right top, right top;
+}
+
+.ruler-left {
+    scale: -1 1;
+}
+
+/* Vertical dashed guides that frame the content column, dropinblog-style. */
+.guide {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-ink) 14%, transparent) 0 6px,
+        transparent 6px 14px
+    );
+    width: 1px;
+}
+
+/* Small square "selection handle" markers used around framed showcases. */
+.handle {
+    width: 7px;
+    height: 7px;
+    border: 1px solid color-mix(in oklab, var(--color-ink) 38%, transparent);
+    background: var(--color-canvas);
+}
+
+/* The blinking text cursor that punctuates the hero headline. */
+.cursor-bar {
+    display: inline-block;
+    width: 0.09em;
+    height: 0.82em;
+    margin-left: 0.06em;
+    background: var(--color-accent);
+    vertical-align: baseline;
+    transform: translateY(0.08em);
+    animation: cursor-blink 1.1s steps(2, jump-none) infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/*
+    The customer-changelog marquee. The track holds the card row twice; the
+    animation slides one full copy's width for a seamless loop. Pauses on
+    hover so the cards can be read.
+*/
+.marquee {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+    width: max-content;
+    animation: marquee-slide 46s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/*
+    The header pill: floats over the canvas; once the page scrolls, main.js
+    sets data-scrolled and the shadow deepens so it reads as a raised bar.
+*/
+#header .nav-pill {
+    box-shadow:
+        0 1px 2px color-mix(in oklab, var(--color-ink) 5%, transparent),
+        0 8px 24px -12px color-mix(in oklab, var(--color-ink) 10%, transparent);
+    transition: box-shadow 0.35s ease;
+}
+
+#header[data-scrolled] .nav-pill {
+    box-shadow:
+        0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent),
+        0 16px 40px -16px color-mix(in oklab, var(--color-ink) 22%, transparent);
+}
+
+/* The mobile menu panel — unfolds under the nav pill as a soft sheet. */
+[data-mobile-panel] {
+    opacity: 0;
+    translate: 0 -8px;
+    visibility: hidden;
+    transition:
+        opacity 0.28s var(--ease-out-quart),
+        translate 0.28s var(--ease-out-quart),
+        visibility 0s linear 0.28s;
+}
+
+.menu-open [data-mobile-panel] {
+    opacity: 1;
+    translate: 0 0;
+    visibility: visible;
+    transition:
+        opacity 0.32s var(--ease-out-quart),
+        translate 0.32s var(--ease-out-quart),
+        visibility 0s;
+}
+
+.menu-open {
+    overflow: hidden;
+}
+
+/* Smooth <details> opening for the FAQ (Chrome; harmless elsewhere). */
+details.faq-item {
+    interpolate-size: allow-keywords;
+}
+
+details.faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.35s var(--ease-out-quart), content-visibility 0.35s;
+    transition-behavior: allow-discrete;
+}
+
+details.faq-item[open]::details-content {
+    block-size: auto;
+}
+
+details.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* A faint dotted engineering grid — used behind the hero and the final CTA. */
+.dot-grid {
+    background-image: radial-gradient(color-mix(in oklab, var(--color-ink) 8%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+}
+
+/* The warm accent bloom that sits behind the hero product window. */
+.glow {
+    background: radial-gradient(
+        ellipse 55% 60% at 50% 20%,
+        color-mix(in oklab, var(--color-accent) 13%, transparent) 0%,
+        color-mix(in oklab, var(--color-accent) 5%, transparent) 45%,
+        transparent 75%
+    );
+}
+
+/*
+    Cards that warm up under the cursor. main.js tracks the pointer and sets
+    --mx / --my per card; the ::after layer paints a soft accent bloom there.
+*/
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+        340px circle at var(--mx, 50%) var(--my, 50%),
+        color-mix(in oklab, var(--color-accent) 7%, transparent),
+        transparent 65%
+    );
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+/*
+    The features bento: a six-track grid where the first two cards run wide
+    and the rest sit three across. Collapses to a single column on small
+    screens, two columns on tablets.
+*/
+.bento > * {
+    grid-column: span 6;
+}
+
+@media (min-width: 640px) {
+    .bento > * {
+        grid-column: span 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento > :nth-child(-n + 2) {
+        grid-column: span 3;
+    }
+
+    .bento > :nth-child(n + 3) {
+        grid-column: span 2;
+    }
+}
+
+/*
+    Long-form typography for blog posts, tuned for the warm light canvas.
+    Applied via class="prose" on the article body.
+*/
+.prose {
+    color: color-mix(in oklab, var(--color-ink) 82%, transparent);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+}
+
+.prose > * + * {
+    margin-top: 1.5em;
+}
+
+.prose h2 {
+    margin-top: 2.6em;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.prose h3 {
+    margin-top: 2.2em;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.prose p.lead {
+    color: var(--color-ink);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+}
+
+.prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 55%, transparent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.prose a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+}
+
+.prose strong {
+    color: var(--color-ink);
+    font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+    padding-left: 1.4em;
+}
+
+.prose ul {
+    list-style: disc;
+}
+
+.prose ol {
+    list-style: decimal;
+}
+
+.prose li {
+    margin-top: 0.55em;
+    padding-left: 0.25em;
+}
+
+.prose li::marker {
+    color: var(--color-faint);
+}
+
+.prose blockquote {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.5em;
+    color: var(--color-ink);
+    font-size: 1.1875rem;
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+}
+
+.prose blockquote cite {
+    display: block;
+    margin-top: 0.9em;
+    font-size: 0.875rem;
+    font-style: normal;
+    color: var(--color-muted);
+}
+
+.prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--color-ink);
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: 0.15em 0.4em;
+}
+
+.prose pre {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    padding: 1.25em 1.5em;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.prose pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+    color: color-mix(in oklab, var(--color-ink) 85%, transparent);
+}
+
+.prose hr {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    border: 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.prose img {
+    border-radius: 12px;
+    border: 1px solid var(--color-line);
+}
+
+.prose figcaption {
+    margin-top: 0.9em;
+    font-size: 0.8125rem;
+    color: var(--color-faint);
+    text-align: center;
+}
