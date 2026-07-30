@@ -71,9 +71,6 @@
         <div class="reveal-5 relative mt-16 sm:mt-20" data-reveal aria-hidden="true">
             <div class="glow pointer-events-none absolute -inset-x-10 -top-16 bottom-0" ></div>
 
-            <div class="pointer-events-none absolute -top-2.5 -left-2.5 max-lg:hidden"><span class="handle block"></span></div>
-            <div class="pointer-events-none absolute -top-2.5 -right-2.5 max-lg:hidden"><span class="handle block"></span></div>
-
             <div class="pointer-events-none relative select-none overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-ink/15">
                 <div class="flex items-center gap-2 border-b border-line px-5 py-3">
                     <span class="size-2.5 rounded-full bg-line"></span>

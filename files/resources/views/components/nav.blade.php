@@ -15,10 +15,12 @@
     riding a fixed wrapper so they hover over the canvas. The pill deepens
     its shadow once the page scrolls (see main.js).
 -->
-<header id="header" class="fixed inset-x-0 top-0 z-40 px-4 pt-3 sm:px-6">
+<header id="header" class="fixed inset-x-0 top-0 z-40 pt-3">
+    <!-- Same container as every section (max-w-6xl + px-6) so the banner, pill, and page content share one left edge. -->
+    <div class="mx-auto w-full max-w-6xl px-6">
 
     @if ($showBanner)
-    <div class="mx-auto mb-3 flex max-w-6xl items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-ink px-5 py-2.5 text-[13px] text-canvas max-sm:flex-wrap" data-reveal>
+    <div class="mb-3 flex items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-ink px-5 py-2.5 text-[13px] text-canvas max-sm:flex-wrap" data-reveal>
         <svg viewBox="0 0 24 24" class="size-3.5 shrink-0 text-accent" fill="currentColor" aria-hidden="true"><g transform="rotate(12 12 12)"><rect x="3.4" y="12" width="3.8" height="8.6" rx="1.9"/><rect x="10.1" y="7.8" width="3.8" height="12.8" rx="1.9"/><rect x="16.8" y="3.4" width="3.8" height="17.2" rx="1.9"/></g></svg>
         <p class="text-center font-medium">{{ $bannerText }}</p>
         <span class="text-canvas/40 max-sm:hidden">·</span>
@@ -26,7 +28,7 @@
     </div>
     @endif
 
-    <div class="nav-pill relative mx-auto flex max-w-5xl items-center gap-2 rounded-full border border-line bg-panel py-2.5 pr-2.5 pl-5">
+    <div class="nav-pill relative flex items-center gap-2 rounded-full border border-line bg-panel py-2.5 pr-2.5 pl-5">
 
         <a href="/" aria-label="Homepage" class="flex items-center gap-2">
             <svg viewBox="0 0 24 24" class="size-5 text-accent" fill="currentColor" aria-hidden="true"><g transform="rotate(12 12 12)"><rect x="3.4" y="12" width="3.8" height="8.6" rx="1.9"/><rect x="10.1" y="7.8" width="3.8" height="12.8" rx="1.9"/><rect x="16.8" y="3.4" width="3.8" height="17.2" rx="1.9"/></g></svg>
@@ -58,6 +60,8 @@
                 <a href="{{ $ctaLink }}" class="flex-1 rounded-full bg-accent px-4 py-2 text-center text-sm font-semibold text-accent-ink">{{ $ctaText }}</a>
             </div>
         </div>
+
+    </div>
 
     </div>
 </header>

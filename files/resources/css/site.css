@@ -152,14 +152,6 @@ body {
     width: 1px;
 }
 
-/* Small square "selection handle" markers used around framed showcases. */
-.handle {
-    width: 7px;
-    height: 7px;
-    border: 1px solid color-mix(in oklab, var(--color-ink) 38%, transparent);
-    background: var(--color-canvas);
-}
-
 /* The blinking text cursor that punctuates the hero headline. */
 .cursor-bar {
     display: inline-block;
