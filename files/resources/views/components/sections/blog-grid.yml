@@ -48,19 +48,3 @@ fields:
                 type: url
                 label: Link
                 default: "/blog"
-
-            category:
-                type: text
-                label: "Category"
-            content:
-                type: richtext
-                label: "Post body"
-            descriptionDetail:
-                type: textarea
-                label: "Detail-page intro"
-            readTimeDetail:
-                type: text
-                label: "Detail read time"
-            slug:
-                type: text
-                label: "Slug"
