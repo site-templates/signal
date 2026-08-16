@@ -20,7 +20,7 @@
     <div class="mx-auto w-full max-w-6xl px-6">
 
     @if ($showBanner)
-    <div class="mb-3 flex items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-ink px-5 py-2.5 text-[13px] text-canvas max-sm:flex-wrap" data-reveal>
+    <div class="mb-3 flex items-center justify-center gap-x-3 gap-y-1 rounded-full bg-ink px-5 py-2.5 text-[13px] text-canvas max-sm:flex-wrap" data-reveal>
         <svg viewBox="0 0 24 24" class="size-3.5 shrink-0 text-accent" fill="currentColor" aria-hidden="true"><g transform="rotate(12 12 12)"><rect x="3.4" y="12" width="3.8" height="8.6" rx="1.9"/><rect x="10.1" y="7.8" width="3.8" height="12.8" rx="1.9"/><rect x="16.8" y="3.4" width="3.8" height="17.2" rx="1.9"/></g></svg>
         <p class="text-center font-medium">{{ $bannerText }}</p>
         <span class="text-canvas/40 max-sm:hidden">·</span>
@@ -28,7 +28,7 @@
     </div>
     @endif
 
-    <div class="nav-pill relative flex items-center gap-2 rounded-full border border-line bg-panel py-2.5 pr-2.5 pl-5">
+    <div class="nav-pill relative flex items-center gap-2 rounded-full border border-line bg-panel py-2.5 pr-2.5 pl-5" data-reveal>
 
         <a href="/" aria-label="Homepage" class="flex items-center gap-2">
             <svg viewBox="0 0 24 24" class="size-5 text-accent" fill="currentColor" aria-hidden="true"><g transform="rotate(12 12 12)"><rect x="3.4" y="12" width="3.8" height="8.6" rx="1.9"/><rect x="10.1" y="7.8" width="3.8" height="12.8" rx="1.9"/><rect x="16.8" y="3.4" width="3.8" height="17.2" rx="1.9"/></g></svg>

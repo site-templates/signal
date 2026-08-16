@@ -198,10 +198,18 @@ body {
     sets data-scrolled and the shadow deepens so it reads as a raised bar.
 */
 #header .nav-pill {
-    box-shadow:
-        0 1px 2px color-mix(in oklab, var(--color-ink) 5%, transparent),
-        0 8px 24px -12px color-mix(in oklab, var(--color-ink) 10%, transparent);
-    transition: box-shadow 0.35s ease;
+    box-shadow: none;
+    /*
+        #header .nav-pill outranks .js [data-reveal] (id + class beats class +
+        attribute), so its transition here must carry the reveal's opacity/
+        translate transitions too — otherwise this rule silently replaces them
+        and the pill snaps into view instead of fading up.
+    */
+    transition:
+        opacity 0.8s var(--ease-spring),
+        translate 0.8s var(--ease-spring),
+        box-shadow 0.35s ease;
+    transition-delay: var(--reveal-delay, 0ms);
 }
 
 #header[data-scrolled] .nav-pill {
