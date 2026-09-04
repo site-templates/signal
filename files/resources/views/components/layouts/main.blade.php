@@ -22,7 +22,7 @@
     <script>document.documentElement.classList.add('js')</script>
     <script src="/js/main.js" defer></script>
 </head>
-<body class="min-h-dvh bg-canvas font-sans text-ink antialiased">
+<body data-instant-navigation class="min-h-dvh bg-canvas font-sans text-ink antialiased">
 
     <!-- The design-canvas frame: faint ruler columns pinned to both viewport edges. -->
     @if ($showRulers)
