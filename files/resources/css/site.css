@@ -69,11 +69,55 @@ body {
 }
 
 /*
-    The reveal system. main.js adds .js to <html> before first paint, then an
-    IntersectionObserver flips .is-visible as each [data-reveal] element scrolls
-    into view. Without JavaScript nothing is ever hidden. Stagger a group by
-    setting --reveal-delay inline or via the utility classes below.
+    Two motion systems, deliberately separate — this is the whole trick to a
+    page that arrives cleanly.
+
+    ENTRANCE — everything above the fold (the header, the hero, an inner
+    page's opener). [data-enter] elements animate themselves the moment the
+    page paints, in one ordered cascade, using nothing but a CSS keyframe.
+    Above-the-fold chrome must never wait to be *told* it is visible: an
+    IntersectionObserver fires a frame or two late and at its own pace, which
+    is exactly how a header ends up sitting still while the thing under it
+    floats in. Order the cascade with .enter-1 … .enter-8.
+
+    REVEAL — everything below the fold. main.js flips .is-visible on
+    [data-reveal] as each element scrolls into view. Stagger with
+    .reveal-1 … .reveal-5.
+
+    Both are gated on .js (set on <html> before first paint), so with
+    JavaScript off nothing is ever hidden.
 */
+@keyframes enter-rise {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 12px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.js [data-enter] {
+    opacity: 0;
+    animation: enter-rise 0.62s var(--ease-spring) both;
+    animation-delay: var(--enter-delay, 0ms);
+}
+
+/*
+    One 60ms beat between steps: fast enough that the page reads as a single
+    movement, slow enough to feel authored rather than accidental.
+*/
+.enter-1 { --enter-delay: 60ms; }
+.enter-2 { --enter-delay: 120ms; }
+.enter-3 { --enter-delay: 180ms; }
+.enter-4 { --enter-delay: 240ms; }
+.enter-5 { --enter-delay: 300ms; }
+.enter-6 { --enter-delay: 360ms; }
+.enter-7 { --enter-delay: 420ms; }
+.enter-8 { --enter-delay: 480ms; }
+
 .js [data-reveal] {
     opacity: 0;
     translate: 0 16px;
@@ -95,6 +139,11 @@ body {
 .reveal-5 { --reveal-delay: 375ms; }
 
 @media (prefers-reduced-motion: reduce) {
+    .js [data-enter] {
+        opacity: 1;
+        animation: none;
+    }
+
     .js [data-reveal] {
         opacity: 1;
         translate: 0 0;
@@ -196,26 +245,58 @@ body {
 /*
     The header pill: floats over the canvas; once the page scrolls, main.js
     sets data-scrolled and the shadow deepens so it reads as a raised bar.
+    The pill's arrival is the [data-enter] keyframe, so nothing here touches
+    opacity or transform — a transition on those would fight the animation.
 */
 #header .nav-pill {
-    box-shadow: none;
-    /*
-        #header .nav-pill outranks .js [data-reveal] (id + class beats class +
-        attribute), so its transition here must carry the reveal's opacity/
-        translate transitions too — otherwise this rule silently replaces them
-        and the pill snaps into view instead of fading up.
-    */
-    transition:
-        opacity 0.8s var(--ease-spring),
-        translate 0.8s var(--ease-spring),
-        box-shadow 0.35s ease;
-    transition-delay: var(--reveal-delay, 0ms);
+    box-shadow:
+        0 1px 2px color-mix(in oklab, var(--color-ink) 3%, transparent),
+        0 8px 24px -14px color-mix(in oklab, var(--color-ink) 14%, transparent);
+    transition: box-shadow 0.35s ease;
 }
 
 #header[data-scrolled] .nav-pill {
     box-shadow:
         0 1px 2px color-mix(in oklab, var(--color-ink) 7%, transparent),
         0 16px 40px -16px color-mix(in oklab, var(--color-ink) 22%, transparent);
+}
+
+/*
+    The announcement capsule folds itself away once the page scrolls, so the
+    fixed header stops covering a 7rem band of the page. The collapse is the
+    grid 1fr → 0fr trick: the row measures itself, so the bar can wrap onto
+    two lines on a phone and still close cleanly. Note the split of duties —
+    the outer wrapper carries [data-enter] (a finished keyframe holds its end
+    values above everything else in the cascade, so an element that animates
+    in can never also transition its own opacity later), the shell animates
+    the height, and the capsule itself fades.
+*/
+#header .announce-shell {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s var(--ease-out-quart);
+}
+
+#header[data-scrolled] .announce-shell {
+    grid-template-rows: 0fr;
+}
+
+#header .announce {
+    transition:
+        opacity 0.28s var(--ease-out-quart),
+        translate 0.4s var(--ease-out-quart);
+}
+
+#header[data-scrolled] .announce {
+    opacity: 0;
+    translate: 0 -6px;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #header .announce-shell,
+    #header .announce {
+        transition: none;
+    }
 }
 
 /* The mobile menu panel — unfolds under the nav pill as a soft sheet. */
@@ -272,14 +353,34 @@ details.faq-item summary::-webkit-details-marker {
     -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
 }
 
-/* The warm accent bloom that sits behind the hero product window. */
+/*
+    The warm accent bloom above the hero product window.
+
+    The geometry matters more than the colour: the ellipse is anchored to the
+    BOTTOM-CENTRE of its box (at 50% 100%) and its radii are sized so every
+    edge of that box sits past the final transparent stop — the top edge at
+    100% of the ray, the sides at 1/0.55 ≈ 91%, the corners further still. A
+    bloom whose gradient is still tinted where its box ends paints a hard
+    horizontal line across the page, which is exactly what this used to do.
+*/
 .glow {
     background: radial-gradient(
-        ellipse 55% 60% at 50% 20%,
-        color-mix(in oklab, var(--color-accent) 13%, transparent) 0%,
-        color-mix(in oklab, var(--color-accent) 5%, transparent) 45%,
-        transparent 75%
+        ellipse 55% 100% at 50% 100%,
+        color-mix(in oklab, var(--color-accent) 9%, transparent) 0%,
+        color-mix(in oklab, var(--color-accent) 3.5%, transparent) 42%,
+        transparent 78%
     );
+}
+
+/*
+    The hero product window dissolves into the canvas instead of stopping at
+    a border. Masking the element itself (rather than laying a canvas-coloured
+    fade over it) takes the border and the drop shadow with it, so there is no
+    edge left to notice.
+*/
+.hero-window {
+    -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 99%);
+    mask-image: linear-gradient(to bottom, black 68%, transparent 99%);
 }
 
 /*

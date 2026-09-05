@@ -46,7 +46,7 @@ fields:
     bannerText:
         type: text
         label: Announcement text
-        default: "Signal 2.0 is here — release notes drafted by AI, straight from your merged PRs."
+        default: "Signal 2.0 — release notes drafted straight from your merged PRs."
     bannerLinkText:
         type: text
         label: Announcement link text

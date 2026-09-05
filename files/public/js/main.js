@@ -1,8 +1,11 @@
 /*
     Signal — the site's small behavior layer.
 
-    - .js on <html> gates the reveal system (no JS, nothing hidden)
-    - IntersectionObserver flips .is-visible on [data-reveal]
+    - .js on <html> gates both motion systems (no JS, nothing hidden)
+    - above the fold, [data-enter] needs nothing from this file: it is a pure
+      CSS keyframe cascade that runs at first paint (see site.css). Nothing
+      already on screen should wait for an observer to tell it it is visible
+    - below the fold, an IntersectionObserver flips .is-visible on [data-reveal]
     - the header pill deepens its shadow once the page scrolls
     - the mobile menu toggles .menu-open on <html>
     - spotlight cards track the pointer into --mx / --my

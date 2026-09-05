@@ -28,7 +28,7 @@
         <div class="flex flex-col items-center text-center">
 
             @if ($showTrust)
-            <p class="flex items-center gap-3 rounded-full border border-line bg-panel py-1.5 pr-4 pl-2 text-[13px] text-muted shadow-sm shadow-ink/5" data-reveal>
+            <p class="enter-2 flex items-center gap-3 rounded-full border border-line bg-panel py-1.5 pr-4 pl-2 text-[13px] text-muted shadow-sm shadow-ink/5" data-enter>
                 <span class="flex -space-x-2">
                     @foreach ($avatars as $avatar)
                         <img src="{{ $avatar->image }}" alt="" class="size-6 rounded-full border-2 border-panel object-cover" loading="lazy">
@@ -38,15 +38,15 @@
             </p>
             @endif
 
-            <h1 class="font-display reveal-1 mt-8 text-5xl leading-[1.06] font-bold tracking-[-0.03em] text-balance sm:text-7xl lg:text-[5.25rem]" data-reveal>
+            <h1 class="font-display enter-3 mt-8 text-5xl leading-[1.06] font-bold tracking-[-0.03em] text-balance sm:text-7xl lg:text-[5.25rem]" data-enter>
                 {{ $heading1 }}@if ($showCursor)<span class="cursor-bar" aria-hidden="true"></span>@endif
                 <br>
                 <span class="text-accent">{{ $heading2 }}</span>
             </h1>
 
-            <p class="reveal-2 mt-7 max-w-2xl text-lg/8 text-pretty text-muted sm:text-xl/9" data-reveal>{{ $body }}</p>
+            <p class="enter-4 mt-7 max-w-2xl text-lg/8 text-pretty text-muted sm:text-xl/9" data-enter>{{ $body }}</p>
 
-            <p class="reveal-3 mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted" data-reveal>
+            <p class="enter-5 mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted" data-enter>
                 <span class="font-medium text-faint">{{ $connectsLabel }}</span>
                 @foreach ($integrations as $integration)
                     <span class="flex items-center gap-1.5">
@@ -56,7 +56,7 @@
                 @endforeach
             </p>
 
-            <div class="reveal-4 mt-9 flex flex-wrap items-center justify-center gap-3" data-reveal>
+            <div class="enter-6 mt-9 flex flex-wrap items-center justify-center gap-3" data-enter>
                 <a href="{{ $ctaLink }}" class="rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-accent-ink shadow-lg shadow-accent/25 transition-all duration-200 hover:bg-accent-deep hover:shadow-accent/35">{{ $ctaText }}</a>
                 <a href="{{ $secondaryLink }}" class="rounded-full border border-line bg-panel px-6 py-3 text-[15px] font-semibold text-ink transition-colors duration-200 hover:bg-raised">{{ $secondaryText }}</a>
             </div>
@@ -68,10 +68,11 @@
             Left: the connected repos and channels. Middle: a merged PR feed
             becoming a drafted release. Right: the publish panel.
         -->
-        <div class="reveal-5 relative mt-16 sm:mt-20" data-reveal aria-hidden="true">
-            <div class="glow pointer-events-none absolute -inset-x-10 -top-16 bottom-0" ></div>
+        <div class="enter-7 relative mt-16 sm:mt-20" data-enter aria-hidden="true">
+            <!-- The bloom sits entirely ABOVE the window; see .glow in site.css for why its box ends where it does. -->
+            <div class="glow pointer-events-none absolute -inset-x-40 -top-56 h-56"></div>
 
-            <div class="pointer-events-none relative select-none overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-ink/15">
+            <div class="hero-window pointer-events-none relative select-none overflow-hidden rounded-3xl border border-line bg-panel shadow-[0_2px_4px_-2px_rgba(0,0,0,0.06),0_24px_60px_-24px_rgba(0,0,0,0.22)]">
                 <div class="flex items-center gap-2 border-b border-line px-5 py-3">
                     <span class="size-2.5 rounded-full bg-line"></span>
                     <span class="size-2.5 rounded-full bg-line"></span>
@@ -226,8 +227,6 @@
                 </div>
             </div>
 
-            <!-- Fade the window into the canvas -->
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-canvas to-transparent"></div>
         </div>
     </div>
 </section>
